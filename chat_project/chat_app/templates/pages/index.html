@@ -24,7 +24,7 @@
     <div class="inbox_people">
     <div class="headind_srch">
         <div class="recent_heading">
-        <h4>Recent</h4>
+        <h4>Recent </h4>
         </div>
         <div class="srch_bar">
         <div class="stylish-input-group">
@@ -100,14 +100,12 @@
         chatSocket.onopen =function(e){
             console.log("connected",e)
         }
-
         chatSocket.onmessage = function(e) {
             var data = JSON.parse(e.data);
             var message = data['message'];
             document.querySelector('#chat-log').value += (message + '\n');
         };
-
-        chatSocket.onclose = function(e) {
+            chatSocket.onclose = function(e) {
             console.error('Chat socket closed unexpectedly');
         };
 

@@ -7,14 +7,13 @@ from . import views
 
 
 router = DefaultRouter()
-router.register(r'allUser', views.UserViewset, basename='allUser'),
-router.register(r'allProfile', views.ProfileViewset, basename='allProfile'),
-router.register(r'allGroupe', views.GroupeChatViewset, basename='allGroupe'),
+router.register(r'allUser', views.UserViewset, basename='allUser')
+router.register(r'allProfile', views.ProfileViewset, basename='allProfile')
+router.register(r'allGroupe', views.GroupeChatViewset, basename='allGroupe')
 # router.register(r'typeSalon', views.Type_salonViewset, basename='tyoeSalon'),
-router.register(r'allSalon', views.SalonViewset, basename='allSalon'),
-router.register(r'allMessage', views.MessageUserViewset, basename='allMessage'),
-router.register(r'allAmi', views.Ami_userViewset, basename='allAmi'),
-
+router.register(r'allSalon', views.SalonViewset, basename='allSalon')
+router.register(r'allMessage', views.MessageUserViewset, basename='allMessage')
+router.register(r'allAmi', views.Ami_userViewset, basename='allAmi')
 urlpatterns = [
     path('chat', views.index,name='index'),
     path('salon/<str:slog_one>/<str:slog_two>', views.salon,name='salon'),

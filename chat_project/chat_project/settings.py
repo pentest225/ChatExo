@@ -39,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chat_app.apps.ChatAppConfig',
+    'graphene_django',
+    'django_filters',
     'rest_framework',
     'corsheaders',
     'channels',
+    
     
 ]
 
@@ -69,7 +72,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'chat_app.context_processor.get_groupe',
             ],
+            
         },
     },
 ]

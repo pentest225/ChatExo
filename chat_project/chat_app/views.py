@@ -6,6 +6,9 @@ from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+import socket
+import requests
+
 
 # Create your views here.
 
@@ -46,7 +49,19 @@ class MessageUserViewset(viewsets.ModelViewSet):
     queryset = models.MessageUser.objects.all()
 
 def index(request):
-    
+    hostname = socket.gethostname()    
+    IPAddr = socket.gethostbyname(hostname)  
+    IPAddr ='160.154.137.78'
+    myUrl ='https://ipapi.com/ip_api.php?ip='+IPAddr+''
+    try:
+        allPcInfo =requests.get(myUrl)
+        print(allPcInfo.text)
+    except:
+        print("Error in try to get informations ")
+    print("####################SOCKET INFO ########################")  
+    print("Your Computer Name is:" + hostname)    
+    print("Your Computer IP Address is:" + IPAddr)
+    print(myUrl)
     return render(request,'pages/index.html')
 
 def salon(request,slog_one,slog_two):
@@ -83,7 +98,7 @@ def salon(request,slog_one,slog_two):
 
 def connexion(request):
     print("################ONNEXION####################")
-    print(request)
+    
     username = request.POST.get('username', False)
     password = request.POST.get('password', False)
     user = authenticate(username=username, password=password)
